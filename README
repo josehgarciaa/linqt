@@ -1,7 +1,35 @@
-To compile please use
+# LSQUANT
+
+LSQUANT is a state-of-the-art library designed for linear-scaling quantum transport calculations. It leverages the power of modern C++ standards and efficient third-party libraries to provide efficient methods to determine conductivity, spin Hall conductivity, etc.
+
+## License
+
+LSQUANT is distributed under the Creative Commons Non-Commercial (CC BY-NC) license. This license allows others to use, remix, transform, and build upon the work non-commercially, as long as they credit LSQUANT and license their new creations under the identical terms. For more details, please see the license agreement.
+
+## Citation
+
+If you use LSQUANT in your research or in any product, please cite the following article to give proper credit:
+
+- [Article Title Here](https://doi.org/10.1016/j.physrep.2020.12.001)
+
+## Development Team
+
+The development team and contributors to LSQUANT can be found at [LSQUANT Team](https://www.lsquant.org/).
+
+## Getting Started
+
+### Prerequisites
+
+- CMake (version >= 3.10)
+- A modern C++ compiler with support for C++17 (GCC, Clang, etc.)
+- Eigen library
+
+### Compiling LSQUANT
+
+To compile LSQUANT, follow these steps:
+
+```bash
 mkdir build
 cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain-icc+mkl.cmake  ..
+cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain-gcc.cmake ..
 cmake --build .
-
-#Requires Eigen
