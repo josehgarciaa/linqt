@@ -10,7 +10,70 @@ using namespace std;
 
 namespace Sparse
 {
-bool OPERATOR_FromCSRFile(const std::string input, int &dim, vector<int> &columns, vector<int> &rowIndex, vector<complex<double> > &values);
+bool OPERATOR_FromCSRFile(const std::string& input, int &dim, 
+                          std::vector<int> &columns, std::vector<int> &rowIndex, 
+                          std::vector<std::complex<double>> &values);
+      // Reads a sparse matrix from a file in Compressed Sparse Row (CSR) format.
+      // Parameters:
+      // - input: The file path to the CSR formatted file.
+      // - dim: Reference to an integer where the dimension of the square matrix will be stored.
+      // - columns: Reference to a vector of integers to store the column indices of non-zero elements.
+      // - rowIndex: Reference to a vector of integers to store the index in 'values' where each row starts.
+      // - values: Reference to a vector of complex<double> to store the values of non-zero elements.
+      // Returns:
+      // - true if the file is successfully read and the data is loaded into the parameters.
+      // - false if there's an error opening the file or reading its contents. 
+};
+
+
+class SparseMatrixBase {
+public:
+    typedef std::complex<double> ValueType;
+    typedef std::vector<ValueType> VectorType;
+    
+    // Constructor to optionally set dimensions during initialization
+    SparseMatrixBase(int numRows = 0, int numCols = 0, const std::string& id = "")
+        : numRows_(numRows), numCols_(numCols), id_(id) {}
+
+    // Virtual destructor to ensure proper cleanup in derived classes
+    virtual ~SparseMatrixBase() {}
+
+    // Accessors
+    virtual int numRows() const { return numRows_; }
+    virtual int numCols() const { return numCols_; }
+    virtual int rank() const {
+        return (numRows_ > numCols_) ? numCols_ : numRows_;
+    }
+    
+    // Mutators
+    virtual void setDimensions(int numRows, int numCols) {
+        if (numRows < 0 || numCols < 0) {
+            std::cerr << "Error: Dimensions must be non-negative." << std::endl;
+            return;
+        }
+        numRows_ = numRows;
+        numCols_ = numCols;
+    }
+
+    virtual void setId(const std::string& id) { id_ = id; }
+    virtual std::string id() const { return id_; }
+
+    // Utility functions
+    virtual bool isIdentity(){ return (bool)( ID()=="1"); };
+
+    // Add virtual functions for mathematical operations here
+    // Example:
+    // virtual SparseMatrixBase add(const SparseMatrixBase& other) const = 0;
+    // virtual SparseMatrixBase multiply(const SparseMatrixBase& other) const = 0;
+
+protected:
+    int numRows_, numCols_;
+    std::string id_;
+
+    // Add common data structures for sparse representation here
+    // For example:
+    // VectorType values_;
+    // std::vector<int> columns_, rowIndex_;
 };
 
 class SparseMatrixType_BASE
@@ -18,8 +81,7 @@ class SparseMatrixType_BASE
 	
 	
 public:
-	typedef complex<double> value_t;
-	typedef vector< value_t > vector_t;
+
 	
 	  int numRows() { return numRows_; };
 	  int numCols() { return numCols_; };
@@ -29,14 +91,8 @@ public:
 		numRows_ = numRows;
 		numCols_ = numCols;
 	  };
-	  void SetID(string id) { id_ = id; }
-	  string ID() const { return id_; }
 		
-	  bool isIdentity(){ return (bool)( ID()=="1"); };
 
-private:
-  int numRows_, numCols_;
-  string id_;
 };
 
 
