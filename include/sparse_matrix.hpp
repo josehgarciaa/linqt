@@ -3,19 +3,18 @@
 
 #include <assert.h> /* assert */
 #include <iostream>
+#include "types.hpp" // add Int, Real, Complex types
 #include <vector>
 #include <cstdint>
 #include <complex>
 #include <fstream>
 using namespace std;
 
-typedef int32_t Int; 
-
 namespace Sparse
 {
-bool OPERATOR_FromCSRFile(const std::string& input, int &dim, 
+bool OPERATOR_FromCSRFile(const std::string& input, Int &dim, 
                           std::vector<Int> &columns, std::vector<Int> &rowIndex, 
-                          std::vector<std::complex<double>> &values);
+                          std::vector<Complex> &values);
       // Reads a sparse matrix from a file in Compressed Sparse Row (CSR) format.
       // Parameters:
       // - input: The file path to the CSR formatted file.
@@ -31,25 +30,23 @@ bool OPERATOR_FromCSRFile(const std::string& input, int &dim,
 
 class SparseMatrixBase {
 public:
-    typedef std::complex<double> ValueType;
-    typedef std::vector<ValueType> VectorType;
-    
+  
     // Constructor to optionally set dimensions during initialization
-    SparseMatrixBase(int numRows = 0, int numCols = 0, const std::string& id = "")
+    SparseMatrixBase(Int numRows = 0, Int numCols = 0, const std::string& id = "")
         : numRows_(numRows), numCols_(numCols), id_(id) {}
 
     // Virtual destructor to ensure proper cleanup in derived classes
     virtual ~SparseMatrixBase() {}
 
     // Accessors
-    virtual int numRows() const { return numRows_; }
-    virtual int numCols() const { return numCols_; }
-    virtual int rank() const {
+    virtual Int numRows() const { return numRows_; }
+    virtual Int numCols() const { return numCols_; }
+    virtual Int rank() const {
         return (numRows_ > numCols_) ? numCols_ : numRows_;
     }
     
     // Mutators
-    virtual void setDimensions(int numRows, int numCols) {
+    virtual void setDimensions(Int numRows, Int numCols) {
         if (numRows < 0 || numCols < 0) {
             std::cerr << "Error: Dimensions must be non-negative." << std::endl;
             return;
