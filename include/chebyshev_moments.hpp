@@ -40,49 +40,35 @@ class Moments
 		this->BandWidth( mom.BandWidth() );
 		this->BandCenter( mom.BandCenter() );
 	};	
-	
-	inline
+
+	//In C++ all members declared within the class definition are 
+	//automatically considered inline	
+
+	//Getters
 	size_t SystemSize() const { return system_size; };
-
-	inline
 	string SystemLabel() const { return system_label; };
-
-	inline
 	double BandWidth() const { return band_width; };
-
-	inline
 	double HalfWidth() const { return BandWidth()/2.0; };
-
-	inline
 	double BandCenter() const { return band_center; };
-
-	inline
-	double ScaleFactor() const { return chebyshev::CUTOFF/HalfWidth(); };
-
-	inline
-	double ShiftFactor() const { return -BandCenter()/HalfWidth()/chebyshev::CUTOFF; };
-
-	inline 
+	double ScaleFactor() const { return  2.0*chebyshev::CUTOFF/BandWidth(); };
+	double ShiftFactor() const { return -2.0*chebyshev::CUTOFF*BandCenter()/BandWidth(); };
 	vector_t& MomentVector() { return mu ;}
-
-	inline
 	value_t& MomentVector(const int i){return  mu[i]; };
-
-	inline
 	Moments::vector_t& Chebyshev0(){ return ChebV0; } 
-
-	inline
 	Moments::vector_t& Chebyshev1(){ return ChebV1; } 
-
-	inline
 	SparseMatrixType& Hamiltonian()
 	{ 
 		return *_pNHAM; 
 	};
 
-
 	//SETTERS
-	inline
+	void SystemSize(const int dim)  { system_size = dim; };
+	void SystemLabel(string label)  { system_label = label; };
+	void BandWidth( const double x)  { band_width = x; };
+	void BandCenter(const double x) { band_center = x; };
+	void MomentVector(const vector_t _mu ) { mu= _mu;}
+	void SetInitVectors( const vector_t& T0 );
+	void SetInitVectors( SparseMatrixType &OP ,const vector_t& T0 );
 	void SetHamiltonian( SparseMatrixType& NHAM )
 	{ 
 		if ( this->SystemSize() == 0 ) //Use the rank of the hamiltonian as system size
@@ -98,46 +84,18 @@ class Moments
 		return 0;
 	};
 
-	inline
 	void SetAndRescaleHamiltonian(SparseMatrixType& NHAM)
 	{ 
-		this->SetHamiltonian(NHAM );
+		this->SetHamiltonian(NHAM);
 		this->Rescale2ChebyshevDomain();
 	};
 
-
-	inline
-	void SystemSize(const int dim)  { system_size = dim; };
-
-	inline
-	void SystemLabel(string label)  { system_label = label; };
-
-	inline
-	void BandWidth( const double x)  { band_width = x; };
-
-	inline
-	void BandCenter(const double x) { band_center = x; };
-
-	inline 
-	void MomentVector(const vector_t _mu ) { mu= _mu;}
-
-	void SetInitVectors( const vector_t& T0 );
-
-	void SetInitVectors( SparseMatrixType &OP ,const vector_t& T0 );
-
-
-	inline
 	double Rescale2ChebyshevDomain(const double energ)
 	{ 
-		return (energ - this->BandCenter() )/this->HalfWidth(); 
+		return this->ScaleFactor()*energ +this->ShiftFactor(); 
 	};
 
-	int Iterate( );
-
-	//light functions
     int JacksonKernelMomCutOff( const double broad );
-	
-	//light functions
     double JacksonKernel(const double m,  const double Mom );
 
 
@@ -150,6 +108,15 @@ class Moments
 	double band_width,band_center;
 	vector_t mu;	
 };
+
+
+
+
+
+
+
+
+
 
 
 class Moments1D: public Moments

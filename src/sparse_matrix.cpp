@@ -1,10 +1,6 @@
 #include "sparse_matrix.hpp"
 
 
-
-
-
-
 bool Sparse::OPERATOR_FromCSRFile(const std::string& input, int &dim, 
                                   std::vector<int> &columns, std::vector<int> &rowIndex, 
                                   std::vector<std::complex<double>> &values) {

@@ -123,10 +123,8 @@ void SparseMatrixType::ConvertFromCSR(vector<MatIdx>& rowIndex,
     }
 }
 
-
-
 // Example implementation for Multiply using Eigen
-void SparseMatrixType::Multiply(const value_t a, const vector_t& x, const value_t b, vector_t& y) {
+void SparseMatrixType::Multiply(const Complex a, const vector_t& x, const Complex b, vector_t& y) {
     Map<const VectorXcd> vecX(x.data(), x.size());
     Map<VectorXcd> vecY(y.data(), y.size());
 

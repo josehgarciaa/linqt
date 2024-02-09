@@ -25,10 +25,10 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -fopenmp")
 # For BLAS, you may need to link against the system-provided BLAS library.
 # This is often provided by packages like libblas-dev or similar on many Linux distributions.
 # Adjust the BLAS_LIB variable as necessary for your specific BLAS library or use FindBLAS CMake module.
-find_package(BLAS REQUIRED)
-if(BLAS_FOUND)
-  set(BLAS_LIB ${BLAS_LIBRARIES})
-endif()
+#find_package(BLAS REQUIRED)
+#if(BLAS_FOUND)
+#  set(BLAS_LIB ${BLAS_LIBRARIES})
+#endif()
 
 # For Eigen, since it's a header-only library, you typically only need to include its path.
 # Adjust the path as necessary based on where Eigen is located on your system or use FindEigen3 CMake module.

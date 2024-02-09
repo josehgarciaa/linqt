@@ -5,12 +5,11 @@
 #include <stdlib.h>
 #include <chrono>
 
-
-#include "kpm_noneqop.hpp" //Message functions
-#include "chebyshev_moments.hpp"
-#include "sparse_matrix.hpp"
-#include "quantum_states.hpp"
-#include "chebyshev_solver.hpp"
+//#include "kpm_noneqop.hpp" //Message functions
+//#include "chebyshev_moments.hpp"
+//#include "sparse_matrix.hpp"
+//#include "quantum_states.hpp"
+//#include "chebyshev_solver.hpp"
 
 namespace spectral
 {
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
 		LABEL  = argv[1],
 		S_OP   = argv[2],
 		S_NMOM = argv[3];
-
+/*
 	const int numMoms   = atoi(S_NMOM.c_str() );
 	chebyshev::Moments1D chebMoms( numMoms ); //load number of moments
 
@@ -84,6 +83,7 @@ int main(int argc, char *argv[])
 	chebMoms.saveIn(outputfilename);
 	std::cout<<"End of program"<<std::endl;
 	return 0;
+*/
 };
 
 
