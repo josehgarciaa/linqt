@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/jgarcia/linqt/src/chebyshev_moments1D.cpp" "src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o" "gcc" "src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o.d"
   "/home/jgarcia/linqt/src/dummy.cpp" "src/CMakeFiles/kpm_lib.dir/dummy.cpp.o" "gcc" "src/CMakeFiles/kpm_lib.dir/dummy.cpp.o.d"
   )
 

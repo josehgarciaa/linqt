@@ -144,6 +144,30 @@ kpm_spectral_green_function/fast:
 	cd /home/jgarcia/linqt/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kpm_spectral_green_function.dir/build.make src/CMakeFiles/kpm_spectral_green_function.dir/build
 .PHONY : kpm_spectral_green_function/fast
 
+chebyshev_moments1D.o: chebyshev_moments1D.cpp.o
+.PHONY : chebyshev_moments1D.o
+
+# target to build an object file
+chebyshev_moments1D.cpp.o:
+	cd /home/jgarcia/linqt/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kpm_lib.dir/build.make src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o
+.PHONY : chebyshev_moments1D.cpp.o
+
+chebyshev_moments1D.i: chebyshev_moments1D.cpp.i
+.PHONY : chebyshev_moments1D.i
+
+# target to preprocess a source file
+chebyshev_moments1D.cpp.i:
+	cd /home/jgarcia/linqt/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kpm_lib.dir/build.make src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.i
+.PHONY : chebyshev_moments1D.cpp.i
+
+chebyshev_moments1D.s: chebyshev_moments1D.cpp.s
+.PHONY : chebyshev_moments1D.s
+
+# target to generate assembly for a file
+chebyshev_moments1D.cpp.s:
+	cd /home/jgarcia/linqt/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/kpm_lib.dir/build.make src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.s
+.PHONY : chebyshev_moments1D.cpp.s
+
 dummy.o: dummy.cpp.o
 .PHONY : dummy.o
 
@@ -202,6 +226,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... kpm_lib"
 	@echo "... kpm_spectral_green_function"
+	@echo "... chebyshev_moments1D.o"
+	@echo "... chebyshev_moments1D.i"
+	@echo "... chebyshev_moments1D.s"
 	@echo "... dummy.o"
 	@echo "... dummy.i"
 	@echo "... dummy.s"

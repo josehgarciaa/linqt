@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../lib/libkpm_lib.a CMakeFiles/kpm_lib.dir/dummy.cpp.o
+/usr/bin/ar qc ../lib/libkpm_lib.a CMakeFiles/kpm_lib.dir/dummy.cpp.o CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o
 /usr/bin/ranlib ../lib/libkpm_lib.a

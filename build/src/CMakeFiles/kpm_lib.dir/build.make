@@ -83,17 +83,33 @@ src/CMakeFiles/kpm_lib.dir/dummy.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kpm_lib.dir/dummy.cpp.s"
 	cd /home/jgarcia/linqt/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jgarcia/linqt/src/dummy.cpp -o CMakeFiles/kpm_lib.dir/dummy.cpp.s
 
+src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o: src/CMakeFiles/kpm_lib.dir/flags.make
+src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o: ../src/chebyshev_moments1D.cpp
+src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o: src/CMakeFiles/kpm_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jgarcia/linqt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o"
+	cd /home/jgarcia/linqt/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o -MF CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o.d -o CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o -c /home/jgarcia/linqt/src/chebyshev_moments1D.cpp
+
+src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.i"
+	cd /home/jgarcia/linqt/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jgarcia/linqt/src/chebyshev_moments1D.cpp > CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.i
+
+src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.s"
+	cd /home/jgarcia/linqt/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jgarcia/linqt/src/chebyshev_moments1D.cpp -o CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.s
+
 # Object files for target kpm_lib
 kpm_lib_OBJECTS = \
-"CMakeFiles/kpm_lib.dir/dummy.cpp.o"
+"CMakeFiles/kpm_lib.dir/dummy.cpp.o" \
+"CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o"
 
 # External object files for target kpm_lib
 kpm_lib_EXTERNAL_OBJECTS =
 
 lib/libkpm_lib.a: src/CMakeFiles/kpm_lib.dir/dummy.cpp.o
+lib/libkpm_lib.a: src/CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o
 lib/libkpm_lib.a: src/CMakeFiles/kpm_lib.dir/build.make
 lib/libkpm_lib.a: src/CMakeFiles/kpm_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jgarcia/linqt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../lib/libkpm_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jgarcia/linqt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../lib/libkpm_lib.a"
 	cd /home/jgarcia/linqt/build/src && $(CMAKE_COMMAND) -P CMakeFiles/kpm_lib.dir/cmake_clean_target.cmake
 	cd /home/jgarcia/linqt/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/kpm_lib.dir/link.txt --verbose=$(VERBOSE)
 
