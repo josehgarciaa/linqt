@@ -3,6 +3,10 @@
 
 #include <cstdint>
 #include <complex>
+#include <Eigen/Core>
+
+typedef Eigen:Index MatIdx;
+typedef Eigen:Index MatSize;
 
 typedef int32_t Int;
 typedef double Real;

@@ -3,7 +3,7 @@
 
 #include <assert.h> /* assert */
 #include <iostream>
-#include "types.hpp" // add Int, Real, Complex types
+#include "types.hpp" // add Int, Real, Complex, MatIdx, MatSize types
 #include <vector>
 #include <cstdint>
 #include <complex>
@@ -12,8 +12,8 @@ using namespace std;
 
 namespace Sparse
 {
-bool OPERATOR_FromCSRFile(const std::string& input, Int &dim, 
-                          std::vector<Int> &columns, std::vector<Int> &rowIndex, 
+bool OPERATOR_FromCSRFile(const std::string& input, MatSize &dim, 
+                          std::vector<MatIdx> &columns, std::vector<MatIdx> &rowIndex, 
                           std::vector<Complex> &values);
       // Reads a sparse matrix from a file in Compressed Sparse Row (CSR) format.
       // Parameters:
@@ -32,21 +32,21 @@ class SparseMatrixBase {
 public:
   
     // Constructor to optionally set dimensions during initialization
-    SparseMatrixBase(Int numRows = 0, Int numCols = 0, const std::string& id = "")
+    SparseMatrixBase(MatSize numRows = 0, MatSize numCols = 0, const std::string& id = "")
         : numRows_(numRows), numCols_(numCols), id_(id) {}
 
     // Virtual destructor to ensure proper cleanup in derived classes
     virtual ~SparseMatrixBase() {}
 
     // Accessors
-    virtual Int numRows() const { return numRows_; }
-    virtual Int numCols() const { return numCols_; }
-    virtual Int rank() const {
+    virtual MatSize numRows() const { return numRows_; }
+    virtual MatSize numCols() const { return numCols_; }
+    virtual MatSize rank() const {
         return (numRows_ > numCols_) ? numCols_ : numRows_;
     }
     
     // Mutators
-    virtual void setDimensions(Int numRows, Int numCols) {
+    virtual void setDimensions(MatSize numRows, MatSize numCols) {
         if (numRows < 0 || numCols < 0) {
             std::cerr << "Error: Dimensions must be non-negative." << std::endl;
             return;
@@ -67,7 +67,7 @@ public:
     // virtual SparseMatrixBase multiply(const SparseMatrixBase& other) const = 0;
 
 protected:
-    int numRows_, numCols_;
+    MatSize numRows_, numCols_;
     std::string id_;
 
     // Add common data structures for sparse representation here
@@ -76,24 +76,63 @@ protected:
     // std::vector<int> columns_, rowIndex_;
 };
 
-class SparseMatrixType_BASE
-{
-	
-	
+  #include <Eigen/Sparse>
+class SparseMatrixType : public SparseMatrixType_BASE {
 public:
+    SparseMatrixType() {}
 
-	
-	  int32 numRows() { return numRows_; };
-	  int numCols() { return numCols_; };
-	  int rank() { return ((this->numRows() > this->numCols()) ? this->numCols() : this->numRows()); };
-	  void setDimensions(const int numRows, const int numCols)
-	  {
-		numRows_ = numRows;
-		numCols_ = numCols;
-	  };
-		
+    string matrixType() const override { return "CSR Matrix from Eigen Library."; }
 
+    void Multiply(const value_t a, const value_t* x, const value_t b, value_t* y) override;
+    void Multiply(const value_t a, const vector_t& x, const value_t b, vector_t& y) override;
+
+    void Rescale(const value_t a, const value_t b) override;
+
+    void ConvertFromCOO(vector<int>& rows, vector<int>& cols, vector<complex<double>>& vals) override;
+    void ConvertFromCSR(vector<int>& rowIndex, vector<int>& cols, vector<complex<double>>& vals) override;
+
+private:
+    SparseMatrix<complex<double>> matrix;
 };
+
+void SparseMatrixType::ConvertFromCOO(std::vector<MatIdx>& rows, 
+                                      std::vector<MatIdx>& cols, 
+                                      std::vector<Complex>& vals) {
+    // Assuming rows, cols, and vals are zero-based indexing
+    std::vector<Triplet<Complex>> triplets;
+    for (size_t i = 0; i < vals.size(); ++i) {
+        triplets.push_back(Triplet<Complex>(rows[i], cols[i], vals[i]));
+    }
+    matrix.setFromTriplets(triplets.begin(), triplets.end());
+}
+
+void SparseMatrixType::ConvertFromCSR(vector<MatIdx>& rowIndex, 
+                                      vector<MatIdx>& cols, 
+                                      vector<Complex>& vals) {
+    // Eigen provides direct support for CSR format, but it requires manual conversion
+    size_t numRows = static_cast<size_t>( this->numRows() ); 
+    matrix.resize(numRows, numRows); // Assuming a square matrix for simplicity
+    matrix.reserve(vals.size());
+
+    for (size_t i = 0; i < numRows; ++i) {
+        for (size_t j = static_cast<size_t>(rowIndex[i]); 
+                    j < static_cast<size_t>(rowIndex[i + 1]); 
+                    ++j) {
+            matrix.insert(static_cast<MatIdx>(i), static_cast<MatIdx>(cols[j])) = vals[j];
+        }
+    }
+}
+
+
+
+// Example implementation for Multiply using Eigen
+void SparseMatrixType::Multiply(const value_t a, const vector_t& x, const value_t b, vector_t& y) {
+    Map<const VectorXcd> vecX(x.data(), x.size());
+    Map<VectorXcd> vecY(y.data(), y.size());
+
+    vecY = a * (matrix * vecX) + b * vecY;
+}
+
 
 
 // MKL LIBRARIES
