@@ -4,14 +4,17 @@
 #include <assert.h> /* assert */
 #include <iostream>
 #include <vector>
+#include <cstdint>
 #include <complex>
 #include <fstream>
 using namespace std;
 
+typedef int32_t Int; 
+
 namespace Sparse
 {
 bool OPERATOR_FromCSRFile(const std::string& input, int &dim, 
-                          std::vector<int> &columns, std::vector<int> &rowIndex, 
+                          std::vector<Int> &columns, std::vector<Int> &rowIndex, 
                           std::vector<std::complex<double>> &values);
       // Reads a sparse matrix from a file in Compressed Sparse Row (CSR) format.
       // Parameters:
@@ -56,7 +59,7 @@ public:
     }
 
     virtual void setId(const std::string& id) { id_ = id; }
-    virtual std::string id() const { return id_; }
+      virtual std::string id() const { return id_; }
 
     // Utility functions
     virtual bool isIdentity(){ return (bool)( ID()=="1"); };
@@ -83,7 +86,7 @@ class SparseMatrixType_BASE
 public:
 
 	
-	  int numRows() { return numRows_; };
+	  int32 numRows() { return numRows_; };
 	  int numCols() { return numCols_; };
 	  int rank() { return ((this->numRows() > this->numCols()) ? this->numCols() : this->numRows()); };
 	  void setDimensions(const int numRows, const int numCols)
