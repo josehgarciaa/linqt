@@ -1,4 +1,4 @@
-#include "chebyshev_moments.hpp"
+#include "chebyshev_moments2D.hpp"
 
 
 void chebyshev::Moments2D::MomentNumber(const int mom0, const int mom1 )

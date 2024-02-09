@@ -12,7 +12,7 @@ dummy.cpp
 #  chebyshev_vectors.cpp
 #  chebyshev_moments.cpp
 #  chebyshev_moments2D.cpp
-#  chebyshev_moments1D.cpp
+  chebyshev_moments1D.cpp
 #  chebyshev_momentsTD.cpp
 #  sparse_matrix.cpp
 #  special_functions.cpp

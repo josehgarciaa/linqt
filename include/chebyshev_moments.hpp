@@ -110,249 +110,42 @@ class Moments
 };
 
 
+/*
+class Vectors : public Moments {
+public:
+    using vectorList_t = VectorList<Moments::value_t>;
 
+    explicit Vectors(size_t nMoms = 0, size_t dim = 0) : Chebmu(nMoms, dim), numVecs(nMoms) {}
 
+    template<typename MomentType>
+    Vectors(MomentType& mom) : Chebmu(mom.HighestMomentNumber(), mom.SystemSize()), numVecs(mom.HighestMomentNumber()) {
+        this->getMomentsParams(mom);
+        if (!mom.Chebyshev0().empty()) {
+            this->SetInitVectors(mom.Chebyshev0());
+        }
+    }
 
+    // Getters
+    size_t NumberOfVectors() const { return numVecs; }
+    size_t Size() const { return static_cast<size_t>(this->SystemSize()) * numVecs; }
+    double SizeInGB() const {
+        return sizeof(value_t) * Size() * std::pow(2.0, -30.0);
+    }
+    size_t HighestMomentNumber() const { return Chebmu.ListSize(); }
+    vectorList_t& List() { return Chebmu; }
+    Moments::vector_t& Vector(size_t m0) { return Chebmu.ListElem(m0); }
+    Moments::value_t& operator()(size_t m0) { return Chebmu(m0, 0); }
 
+    // Setters
+    void SetNumberOfVectors(size_t x) { numVecs = x; }
 
+    // Operations
+    int IterateAll();
+    int EvolveAll(double DeltaT, double Omega0);
+    int Multiply(SparseMatrixType& OP);
 
+    double MemoryConsumptionInGB();
 
-
-
-class Moments1D: public Moments
-{
-	public: 
-
-	Moments1D():_numMoms(0){};
-
-	Moments1D(const size_t m0):_numMoms(m0){ this->MomentVector( Moments::vector_t(_numMoms, 0.0) ); };
-
-	Moments1D( std::string momfilename );
-
-	//GETTERS
-	inline
-	size_t MomentNumber() const { return _numMoms; };
-
-	inline
-	size_t HighestMomentNumber() const { return  _numMoms; };
-
-	//SETTERS
-
-	//OPERATORS
-	inline
-	Moments::value_t& operator()(const size_t m0) { return this->MomentVector(m0); };
-
-	void MomentNumber(const size_t _numMoms );
-
-	void saveIn(std::string filename);
-
-	//Transformation
-	void ApplyJacksonKernel( const double broad );
-
-	// Input/Output
-	void Print();
-
-	private:
-	size_t _numMoms;
-};
-
-
-class Moments2D: public Moments
-{
-	public:
-	Moments2D():numMoms({0,0}){};
-
-
-	Moments2D(const size_t m0,const size_t m1):numMoms({m0,m1}){ this->MomentVector( Moments::vector_t(numMoms[1]*numMoms[0], 0.0) );    };
-
-	Moments2D( std::string momfilename );
-
-
-	Moments2D( Moments2D mom, const size_t m0,const size_t m1 )
-	{
-		this->getMomentsParams(mom);
-		this->numMoms={m0,m1};
-		this->MomentVector( Moments::vector_t(numMoms[1]*numMoms[0], 0.0) );    
-	};
-
-	//GETTERS
-
-	array<int, 2> MomentNumber() const { return numMoms; };
-
-	int HighestMomentNumber(const int i) const { return numMoms[i]; };
-
-	inline
-	int HighestMomentNumber() const { return  (numMoms[1] > numMoms[0]) ? numMoms[1] : numMoms[0]; };
-
-	//SETTERS
-	void MomentNumber(const int mom0, const int mom1 );
-
-	//OPERATORS
-	inline
-	Moments::value_t& operator()(const int m0,const int m1) { return this->MomentVector(m0*numMoms[1] + m1 ); };
-
-	//Transformation
-	void ApplyJacksonKernel( const double b0, const double b1 );
-
-	// Input/Output 
-	//COSTFUL FUNCTIONS
-	void saveIn(std::string filename);
-
-	
-	void AddSubMatrix( Moments2D& sub , const int mL, const int mR)
-	{
-		for(int m0=0; m0<sub.HighestMomentNumber(0); m0++)
-		for(int m1=0; m1<sub.HighestMomentNumber(1); m1++)
-			this->operator()(mL+m0,mR+m1) += sub(m0,m1);
-	} 
-
-	void InsertSubMatrix( Moments2D& sub , const int mL, const int mR)
-	{
-		for(int m0=0; m0<sub.HighestMomentNumber(0); m0++)
-		for(int m1=0; m1<sub.HighestMomentNumber(1); m1++)
-			this->operator()(mL+m0,mR+m1) = sub(m0,m1);
-	} 
-	
-	
-
-	void Print();
-
-	private:
-	array<int, 2> numMoms;
-};
-
-  class MomentsTD : public Moments
-  {
-	  public:
-	  const double HBAR = 0.6582119624 ;//planck constant in eV.fs
-	  
-	  MomentsTD():
-	  _numMoms(1), _maxTimeStep(1),
-	  _timeStep(0),
-	  _dt(0)
-	  {};
-	  
-	  MomentsTD( const size_t m, const size_t n ): 
-	  _numMoms(m), _maxTimeStep(n),
-	  _timeStep(0),
-	  _dt(0)
-	  { this->MomentVector( Moments::vector_t(m*n, 0.0) );    };
-	  
-	  MomentsTD( std::string momfilename );
-	  
-	  //GETTERS
-	  inline
-	  size_t MomentNumber() const { return _numMoms;};
-	  
-	  inline
-	  size_t HighestMomentNumber() const { return _numMoms;};
-	  
-	  inline
-	  size_t CurrentTimeStep() const { return _timeStep;};
-
-	  inline 
-	  size_t MaxTimeStep() const { return _maxTimeStep; };
-	  
-	  inline
-	  double TimeDiff() const   { return _dt; };
-	  	  
-	  inline
-	  double ChebyshevFreq() const   { return HalfWidth()/chebyshev::CUTOFF/HBAR; };
-
-	  inline
-	  double ChebyshevFreq_0() const   { return BandCenter()/HBAR; };
-	  
-	  //SETTERS
-	  
-	  void MomentNumber(const size_t mom);
-	  
-	  void MaxTimeStep(const  size_t maxTimeStep )  {  _maxTimeStep = maxTimeStep; };
-
-	  inline
-	  void IncreaseTimeStep(){ _timeStep++; };
-
-	  inline
-	  void ResetTime(){ _timeStep=0; };
-	  
-	  inline
-	  void TimeDiff(const double dt ) { _dt = dt; };
-	  
-	  
-	  int Evolve(  vector_t& Phi);
-	  
-	  //OPERATORS
-	  inline
-	  Moments::value_t& operator()(const size_t m, const size_t n)
-	  {
-		  return this->MomentVector( m*MaxTimeStep() + n );
-	  };
-	  
-	  //Transformation
-	  void ApplyJacksonKernel( const double broad );
-	  
-	  //COSTFUL FUNCTIONS
-	  void saveIn(std::string filename);
-	  
-	  void Print();
-
-  private:
-    size_t _numMoms, _maxTimeStep, _timeStep;
-    double _dt;
-  };
-
-class Vectors : public Moments
-{
-	public: 
-	typedef VectorList< Moments::value_t > vectorList_t;
-
-
-	int NumberOfVectors() const
-	{ return numVecs;}
-
-
-	int SetNumberOfVectors( const int x)
-	{ numVecs = x; return 0;}
-
-
-	Vectors():Chebmu(0,0){};
-	
-	Vectors(const size_t nMoms,const size_t dim ):Chebmu(nMoms,dim) {  };
-
-	Vectors( Moments1D& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-	
-	Vectors( Moments2D& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-
-	
-	Vectors( Moments2D& mom, size_t i  ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-	
-	
-   
-    int CreateVectorSet()
-    {
-		try
-		{
-			const int vec_size  = this->SystemSize();
-			const int list_size = this->NumberOfVectors();
-			Chebmu(list_size, vec_size );
-		}
-		catch (...)
-		{ std::cerr<<"Failed to initilize the vector list."<<std::endl;}
-
-		
-		return 0;
-	}
-    
-    
-    
     Vectors( MomentsTD& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
 	{ 
 		this->getMomentsParams(mom);
@@ -375,46 +168,14 @@ class Vectors : public Moments
 				(long unsigned int)this->NumberOfVectors();
 	}
 
-	inline 
-	double SizeInGB() const
-	{
-		const double vec_size  = this->SystemSize();
-		const double list_size = this->NumberOfVectors();
-		return  sizeof(value_t)*vec_size*list_size*pow(2.0,-30.0);
-	}
 
-	inline
-	size_t HighestMomentNumber() const { return  this->Chebmu.ListSize(); };
-
-
-	inline
-	vectorList_t& List() { return this->Chebmu; };
-
-	inline
-	Moments::vector_t& Vector(const size_t m0) { return this->Chebmu.ListElem(m0); };
-
-
-	inline
-	Moments::value_t& operator()(const size_t m0) { return this->Chebmu(m0,0); };
-
-	int IterateAll( );
-
-	int EvolveAll( const double DeltaT, const double Omega0);
-
-	int Multiply( SparseMatrixType &OP );
-
-
-	double MemoryConsumptionInGB();
-
-
-	private:
+private:
+    vectorList_t Chebmu;
+    size_t numVecs = 0;
 	Moments::vector_t OPV;
-	vectorList_t Chebmu;	
-	int numVecs;
-};
 
 };
-
+*/
 #endif 
 
 

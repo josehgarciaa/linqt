@@ -1,4 +1,4 @@
-#include "chebyshev_moments.hpp"
+#include "../include/chebyshev_moments1D.hpp"
 
 void chebyshev::Moments1D::Print()
 {

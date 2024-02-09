@@ -1,6 +1,0 @@
-/home/jgarcia/linqt/build/CMakeFiles/edit_cache.dir
-/home/jgarcia/linqt/build/CMakeFiles/rebuild_cache.dir
-/home/jgarcia/linqt/build/src/CMakeFiles/kpm_lib.dir
-/home/jgarcia/linqt/build/src/CMakeFiles/kpm_spectral_green_function.dir
-/home/jgarcia/linqt/build/src/CMakeFiles/edit_cache.dir
-/home/jgarcia/linqt/build/src/CMakeFiles/rebuild_cache.dir
