@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/ljgarcia/linqt/build/src",
+  "command": "/usr/bin/c++  -I/home/ljgarcia/linqt/src/include -I/usr/include/eigen3 -I/usr/include/boost -g -std=c++17 -o CMakeFiles/kpm_lib.dir/dummy.cpp.o -c /home/ljgarcia/linqt/src/dummy.cpp",
+  "file": "/home/ljgarcia/linqt/src/dummy.cpp"
+},
+{
+  "directory": "/home/ljgarcia/linqt/build/src",
+  "command": "/usr/bin/c++  -I/home/ljgarcia/linqt/src/include -I/usr/include/eigen3 -I/usr/include/boost -g -std=c++17 -o CMakeFiles/kpm_lib.dir/chebyshev_moments1D.cpp.o -c /home/ljgarcia/linqt/src/chebyshev_moments1D.cpp",
+  "file": "/home/ljgarcia/linqt/src/chebyshev_moments1D.cpp"
+},
+{
+  "directory": "/home/ljgarcia/linqt/build/src",
+  "command": "/usr/bin/c++  -I/home/ljgarcia/linqt/src/include -I/usr/include/eigen3 -I/usr/include/boost -g -std=c++17 -o CMakeFiles/kpm_spectral_green_function.dir/kpm_spectral_green_function.cpp.o -c /home/ljgarcia/linqt/src/kpm_spectral_green_function.cpp",
+  "file": "/home/ljgarcia/linqt/src/kpm_spectral_green_function.cpp"
+}
+]

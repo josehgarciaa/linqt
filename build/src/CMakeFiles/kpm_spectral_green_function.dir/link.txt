@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/kpm_spectral_green_function.dir/kpm_spectral_green_function.cpp.o -o ../bin/kpm_spectral_green_function  ../lib/libkpm_lib.a 
