@@ -1,4 +1,4 @@
-# Install script for directory: /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/src
+# Install script for directory: /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

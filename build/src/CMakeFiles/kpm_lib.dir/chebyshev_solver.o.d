@@ -1,6 +1,6 @@
 src/CMakeFiles/kpm_lib.dir/chebyshev_solver.o: \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/src/chebyshev_solver.cpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_solver.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/src/chebyshev_solver.cpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_solver.hpp \
   /usr/include/c++/11/cassert \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -183,7 +183,7 @@ src/CMakeFiles/kpm_lib.dir/chebyshev_solver.o: \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/limits \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/sparse_matrix.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/sparse_matrix.hpp \
   /usr/include/c++/11/iostream \
   /opt/intel/oneapi/mkl/2024.0/include/mkl.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_version.h \
@@ -223,13 +223,13 @@ src/CMakeFiles/kpm_lib.dir/chebyshev_solver.o: \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_direct_call.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_compact.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_sparse_qr.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_moments.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/linear_algebra.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/vector_list.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/special_functions.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_coefficients.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_moments.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/linear_algebra.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/vector_list.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/special_functions.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_coefficients.hpp \
   /opt/intel/oneapi/compiler/2024.0/opt/compiler/include/omp.h \
   /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
   /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/quantum_states.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/kpm_noneqop.hpp
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/quantum_states.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/kpm_noneqop.hpp

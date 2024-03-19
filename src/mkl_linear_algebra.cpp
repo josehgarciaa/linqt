@@ -1,5 +1,5 @@
-
 #include "linear_algebra.hpp"
+#include <eigen-3.4.0/Eigen/Core>
 
 void linalg::scal(const complex<double>& a, vector< complex<double> >& x)
 {
@@ -78,15 +78,16 @@ void linalg::batch_vdot(const int dim,const int batchSize,const complex<double>*
 }
 
 
-
 void linalg::extract_segment(vector< complex<double> >&x, size_t size_x, size_t start_x,  vector< complex<double> >& y, size_t size_y ){//size_x >> size_y
-  for(size_t i = 0; i < size_y; i++)//Terrible: not parallelized. Trivial in Eigen/OMP, can't find a block_copy subroutine in cblas.
-    x[start_x + i] = y[i];
+#pragma omp parallel for 
+  for(size_t i = 0;  i < size_y ; i++)//&& (start_x + i < size_x)  !!!
+    y[i] = x[start_x + i];
+
 };
 
 void linalg::introduce_segment(vector< complex<double> >&x, size_t size_x, vector< complex<double> >& y, size_t size_y, size_t start_y ){//size_y >> size_y
-
-  for(size_t i = 0; i< size_x; i++)//Terrible: not parallelized. Trivial in Eigen/OMP, can't find a block_copy subroutine in cblas.
+#pragma omp parallel for 
+  for(size_t i = 0; i< size_x; i++)
     y[start_y + i] = x[i];
 
 };  

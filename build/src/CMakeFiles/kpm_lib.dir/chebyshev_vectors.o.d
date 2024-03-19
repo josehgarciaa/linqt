@@ -1,6 +1,6 @@
 src/CMakeFiles/kpm_lib.dir/chebyshev_vectors.o: \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/src/chebyshev_vectors.cpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_moments.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/src/chebyshev_vectors.cpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_moments.hpp \
   /opt/intel/oneapi/compiler/2024.0/opt/compiler/include/complex \
   /usr/include/c++/11/complex \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -173,7 +173,7 @@ src/CMakeFiles/kpm_lib.dir/chebyshev_vectors.o: \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/array \
   /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/sparse_matrix.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/sparse_matrix.hpp \
   /usr/include/assert.h /usr/include/c++/11/iostream \
   /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
@@ -218,7 +218,7 @@ src/CMakeFiles/kpm_lib.dir/chebyshev_vectors.o: \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_compact.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_sparse_qr.h \
   /usr/include/c++/11/cassert /usr/include/c++/11/limits \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/linear_algebra.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/vector_list.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/special_functions.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_coefficients.hpp
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/linear_algebra.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/vector_list.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/special_functions.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_coefficients.hpp

@@ -1,7 +1,7 @@
 #include "chebyshev_moments.hpp"
 
 
-int chebyshev::Vectors_sliced::IterateAll(int s )
+int chebyshev::Vectors_sliced::IterateAllSliced(int s )
 {
   size_t segment_size = ( s == num_sections_ ? last_section_size_ : section_size_ ),
     segment_start = s * section_size_,
@@ -20,7 +20,7 @@ int chebyshev::Vectors_sliced::IterateAll(int s )
 };
 
 
-int chebyshev::Vectors_sliced::Multiply( SparseMatrixType &OP, int s)
+int chebyshev::Vectors_sliced::MultiplySliced( SparseMatrixType &OP, int s)
 {
   size_t segment_size = ( s == num_sections_ ? last_section_size_ : section_size_ ),
     segment_start = s * section_size_,
@@ -47,7 +47,7 @@ int chebyshev::Vectors_sliced::Multiply( SparseMatrixType &OP, int s)
 
 
 
-
+/*
 int chebyshev::Vectors::IterateAll( )
 {	
 	//The vectorss Chebyshev0() and Chebyshev1() are assumed to have
@@ -78,7 +78,7 @@ int chebyshev::Vectors::Multiply( SparseMatrixType &OP )
 
 	return 0;
 };
-
+*/
 
 int chebyshev::Vectors::EvolveAll(const double DeltaT, const double Omega0)
 {

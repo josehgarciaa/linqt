@@ -1,5 +1,5 @@
 src/CMakeFiles/inline_kuboBastinIFromChebmom.dir/kuboBastinIFromChebmom.o: \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/src/kuboBastinIFromChebmom.cpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/src/kuboBastinIFromChebmom.cpp \
   /usr/include/c++/11/iostream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -175,7 +175,7 @@ src/CMakeFiles/inline_kuboBastinIFromChebmom.dir/kuboBastinIFromChebmom.o: \
   /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
   /opt/intel/oneapi/compiler/2024.0/opt/compiler/include/omp.h \
   /usr/include/c++/11/stdlib.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_solver.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_solver.hpp \
   /usr/include/c++/11/cassert /usr/include/assert.h \
   /usr/include/c++/11/array /usr/include/c++/11/utility \
   /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/numeric \
@@ -185,7 +185,7 @@ src/CMakeFiles/inline_kuboBastinIFromChebmom.dir/kuboBastinIFromChebmom.o: \
   /usr/include/c++/11/bits/stl_heap.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
   /usr/include/c++/11/bits/uniform_int_dist.h /usr/include/c++/11/limits \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/sparse_matrix.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/sparse_matrix.hpp \
   /opt/intel/oneapi/mkl/2024.0/include/mkl.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_version.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_types.h \
@@ -223,12 +223,12 @@ src/CMakeFiles/inline_kuboBastinIFromChebmom.dir/kuboBastinIFromChebmom.o: \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_direct_call.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_compact.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_sparse_qr.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_moments.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/linear_algebra.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/vector_list.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/special_functions.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_coefficients.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_moments.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/linear_algebra.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/vector_list.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/special_functions.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_coefficients.hpp \
   /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
   /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/quantum_states.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/kpm_noneqop.hpp
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/quantum_states.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/kpm_noneqop.hpp

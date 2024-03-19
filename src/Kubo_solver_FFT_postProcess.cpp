@@ -289,7 +289,7 @@ void Kubo_solver_FFT_postProcess::Greenwood_postProcess(const value_t final_data
 
   
   for(int e=0; e<nump; e++){
-    rearranged_E_points[e] = E_points_[e];
+    rearranged_E_points[e] =  E_points_[e] ;
     partial_result[e] = 0.0;
     rvec_partial_result[e] = 0.0;
   }
@@ -358,7 +358,7 @@ void Kubo_solver_FFT_postProcess::Greenwood_postProcess(const value_t final_data
   dataP.open(filename);
 
   for(int e=0;e<nump;e++)  
-    dataP<< a * rearranged_E_points[e] - b<<"  "<< partial_result [e] <<std::endl;
+    dataP<<  a * rearranged_E_points[e]-b<<"  "<< partial_result [e] <<std::endl;
 
   dataP.close();
 

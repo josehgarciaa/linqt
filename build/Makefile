@@ -57,10 +57,10 @@ RM = /home/santiago/miniconda3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta
+CMAKE_SOURCE_DIR = /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/build
+CMAKE_BINARY_DIR = /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/build/CMakeFiles /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/build/CMakeFiles /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -318,17 +318,17 @@ inline_timeCorrelationsFromChebmom/fast:
 .PHONY : inline_timeCorrelationsFromChebmom/fast
 
 #=============================================================================
-# Target rules for targets named inline_compute-kpm-Kubo-FFT
+# Target rules for targets named inline_compute-Kubo-kpm-FFT
 
 # Build rule for target.
-inline_compute-kpm-Kubo-FFT: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 inline_compute-kpm-Kubo-FFT
-.PHONY : inline_compute-kpm-Kubo-FFT
+inline_compute-Kubo-kpm-FFT: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 inline_compute-Kubo-kpm-FFT
+.PHONY : inline_compute-Kubo-kpm-FFT
 
 # fast build rule for target.
-inline_compute-kpm-Kubo-FFT/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/inline_compute-kpm-Kubo-FFT.dir/build.make src/CMakeFiles/inline_compute-kpm-Kubo-FFT.dir/build
-.PHONY : inline_compute-kpm-Kubo-FFT/fast
+inline_compute-Kubo-kpm-FFT/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/inline_compute-Kubo-kpm-FFT.dir/build.make src/CMakeFiles/inline_compute-Kubo-kpm-FFT.dir/build
+.PHONY : inline_compute-Kubo-kpm-FFT/fast
 
 # Help Target
 help:
@@ -342,8 +342,8 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... inline_compute-Kubo-kpm-FFT"
 	@echo "... inline_compute-kpm-CorrOp"
-	@echo "... inline_compute-kpm-Kubo-FFT"
 	@echo "... inline_compute-kpm-nonEqOp"
 	@echo "... inline_compute-kpm-spectralOp"
 	@echo "... inline_kuboBastinFromChebmom"

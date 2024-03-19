@@ -104,7 +104,7 @@ void Kubo_solver_FFT::polynomial_recursion(const vector_t& PhiR, const vector_t&
 	  
 	  time_station csrmv_time_kets;
 
-	  chebVecL.IterateAll(s);
+	  chebVecL.IterateAllSliced(s);
 
 	  csrmv_time_kets.stop_add( &total_time_csrmv, "           Kets cycle time:            ");
 
@@ -113,8 +113,8 @@ void Kubo_solver_FFT::polynomial_recursion(const vector_t& PhiR, const vector_t&
 
 	  time_station csrmv_time_bras;  
 
-	  chebVecR.IterateAll(s);
-	  chebVecR.Multiply( OPR, s );
+	  chebVecR.IterateAllSliced(s);
+	  chebVecR.MultiplySliced( OPR, s );
 		
 	  csrmv_time_bras.stop_add( &total_time_csrmv,  "           Bras cycle time:            ");
 

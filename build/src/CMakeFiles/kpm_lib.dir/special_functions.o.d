@@ -1,6 +1,6 @@
 src/CMakeFiles/kpm_lib.dir/special_functions.o: \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/src/special_functions.cpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/special_functions.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/src/special_functions.cpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/special_functions.hpp \
   /usr/include/c++/11/limits \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

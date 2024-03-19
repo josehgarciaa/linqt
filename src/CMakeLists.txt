@@ -78,7 +78,7 @@ add_executable(${MAIN} timeCorrelationsFromChebmom.cpp  )
 target_link_libraries(${MAIN} ${KPM_LIB} )
 
 
-set(MAIN inline_compute-kpm-Kubo-FFT )
-add_executable(${MAIN} inline_compute-kpm-Kubo-FFT.cpp  )
+set(MAIN inline_compute-Kubo-kpm-FFT )
+add_executable(${MAIN} inline_compute-Kubo-kpm-FFT.cpp  )
 target_link_libraries(${MAIN} ${KPM_LIB} )
 

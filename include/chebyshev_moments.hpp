@@ -333,119 +333,6 @@ class Moments2D: public Moments
     double _dt;
   };
 
-class Vectors : public Moments
-{
-	public: 
-	typedef VectorList< Moments::value_t > vectorList_t;
-
-
-	int NumberOfVectors() const
-	{ return numVecs;}
-
-
-	int SetNumberOfVectors( const int x)
-	{ numVecs = x; return 0;}
-
-
-	Vectors():Chebmu(0,0){};
-	
-	Vectors(const size_t nMoms,const size_t dim ):Chebmu(nMoms,dim) {  };
-
-	Vectors( Moments1D& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-	
-	Vectors( Moments2D& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-
-	
-	Vectors( Moments2D& mom, size_t i  ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-	
-	
-   
-    int CreateVectorSet()
-    {
-		try
-		{
-			const int vec_size  = this->SystemSize();
-			const int list_size = this->NumberOfVectors();
-			Chebmu(list_size, vec_size );
-		}
-		catch (...)
-		{ std::cerr<<"Failed to initilize the vector list."<<std::endl;}
-
-		
-		return 0;
-	}
-    
-    
-    
-    Vectors( MomentsTD& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
-	{ 
-		this->getMomentsParams(mom);
-	};
-
-	void getMomentsParams( Moments& mom)
-	{
-		this->SetHamiltonian( mom.Hamiltonian() ) ; 
-		this->SystemLabel( mom.SystemLabel());
-		this->BandWidth( mom.BandWidth() );
-		this->BandCenter( mom.BandCenter() );
-		if ( mom.Chebyshev0().size() == this->SystemSize() )
-			this->SetInitVectors( mom.Chebyshev0() );
-	}
-
-	inline
-	size_t Size() const
-	{
-		return  (long unsigned int)this->SystemSize()*
-				(long unsigned int)this->NumberOfVectors();
-	}
-
-	inline 
-	double SizeInGB() const
-	{
-		const double vec_size  = this->SystemSize();
-		const double list_size = this->NumberOfVectors();
-		return  sizeof(value_t)*vec_size*list_size*pow(2.0,-30.0);
-	}
-
-	inline
-	size_t HighestMomentNumber() const { return  this->Chebmu.ListSize(); };
-
-
-	inline
-	vectorList_t& List() { return this->Chebmu; };
-
-	inline
-	Moments::vector_t& Vector(const size_t m0) { return this->Chebmu.ListElem(m0); };
-
-
-	inline
-	Moments::value_t& operator()(const size_t m0) { return this->Chebmu(m0,0); };
-
-	int IterateAll( );
-
-	int EvolveAll( const double DeltaT, const double Omega0);
-
-	int Multiply( SparseMatrixType &OP );
-
-
-	double MemoryConsumptionInGB();
-
-
-	private:
-	Moments::vector_t OPV;
-	vectorList_t Chebmu;	
-	int numVecs;
-};
-
 
 
   
@@ -458,10 +345,14 @@ class Vectors_sliced : public Moments
 	int NumberOfVectors() const
 	{ return numVecs_;}
 
-
 	int SetNumSections( const int x)
-	{ num_sections_ = x; return 0;}
-
+	{
+	  num_sections_ = x;
+	  section_size_ = SystemSize()/num_sections_; // All of this assuming */* is larger than *%*. Otherwise, i'd change num_sections until it is.
+	  last_section_size_ = SystemSize()/num_sections_ + SystemSize() % num_sections_;
+	  
+	  return 0;}
+  
 
 	Vectors_sliced():Chebmu_(0,0){};
 
@@ -529,9 +420,9 @@ class Vectors_sliced : public Moments
 	inline
 	Moments::value_t& operator()(const size_t m0) { return this->Chebmu_(m0,0); };
 
-	int IterateAll( int );
+	int IterateAllSliced( int );
 
-        int Multiply( SparseMatrixType & , int );
+        int MultiplySliced( SparseMatrixType & , int );
 
 	double MemoryConsumptionInGB();
 
@@ -544,6 +435,70 @@ class Vectors_sliced : public Moments
   };
 
 
+
+class Vectors : public Vectors_sliced
+{
+	public: 
+	typedef VectorList< Moments::value_t > vectorList_t;
+
+
+	int SetNumberOfVectors( const int x)
+        {numVecs = x; return 0;};
+  
+	Vectors():Chebmu(0,0){};
+	
+        Vectors(const size_t nMoms,const size_t dim ):Chebmu(nMoms,dim) { SetNumSections(1);};
+
+	Vectors( Moments1D& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
+	{
+	        SetNumSections(1);
+		this->getMomentsParams(mom);
+	};
+	
+	Vectors( Moments2D& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
+	{
+	        SetNumSections(1);
+		this->getMomentsParams(mom);
+	};
+
+	
+	Vectors( Moments2D& mom, size_t i  ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
+	{
+	        SetNumSections(1);
+		this->getMomentsParams(mom);
+	};    
+    
+    
+        Vectors( MomentsTD& mom ): Chebmu(mom.HighestMomentNumber(), mom.SystemSize() )
+	{
+	        SetNumSections(1);
+		this->getMomentsParams(mom);
+	};
+
+
+        int IterateAll( )
+        {
+	  IterateAllSliced(1);
+	  return 0;
+        };
+
+	int EvolveAll( const double DeltaT, const double Omega0);
+
+        int Multiply( SparseMatrixType &OP )
+        {
+	  MultiplySliced(OP, 1);
+	  return 0;
+	};
+
+
+	double MemoryConsumptionInGB();
+
+
+	private:
+	Moments::vector_t OPV;
+	vectorList_t Chebmu;	
+	int numVecs;
+};
 
 
   

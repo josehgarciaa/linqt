@@ -1,6 +1,6 @@
 src/CMakeFiles/kpm_lib.dir/Kubo_solver_FFT_postProcess.o: \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/src/Kubo_solver_FFT_postProcess.cpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/Kubo_solver_FFT.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/src/Kubo_solver_FFT_postProcess.cpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/Kubo_solver_FFT.hpp \
   /usr/include/c++/11/string \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -170,7 +170,7 @@ src/CMakeFiles/kpm_lib.dir/Kubo_solver_FFT_postProcess.o: \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
   /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
   /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/sparse_matrix.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/sparse_matrix.hpp \
   /usr/include/assert.h /usr/include/c++/11/vector \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_vector.h \
@@ -218,15 +218,15 @@ src/CMakeFiles/kpm_lib.dir/Kubo_solver_FFT_postProcess.o: \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_direct_call.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_compact.h \
   /opt/intel/oneapi/mkl/2024.0/include/mkl_sparse_qr.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_moments.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_moments.hpp \
   /usr/include/c++/11/array /usr/include/c++/11/utility \
   /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/cassert \
   /usr/include/c++/11/limits \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/linear_algebra.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/vector_list.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/special_functions.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_coefficients.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/chebyshev_solver.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/linear_algebra.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/vector_list.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/special_functions.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_coefficients.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/chebyshev_solver.hpp \
   /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
   /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
   /usr/include/c++/11/bits/algorithmfwd.h \
@@ -236,6 +236,6 @@ src/CMakeFiles/kpm_lib.dir/Kubo_solver_FFT_postProcess.o: \
   /opt/intel/oneapi/compiler/2024.0/opt/compiler/include/omp.h \
   /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
   /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/quantum_states.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/kpm_noneqop.hpp \
-  /home/santiago/Documents/ICN2/Codes/linqt-2.0.0_beta/include/time_station.hpp
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/quantum_states.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/kpm_noneqop.hpp \
+  /home/santiago/Documents/ICN2/Codes/linqt-3.0.0_beta/include/time_station.hpp

@@ -59,11 +59,11 @@ void Kubo_solver_FFT::Greenwood_FFTs(Vectors_sliced &chebVecL, Vectors_sliced &c
     for(int l = l_start; l < l_end; l++){
 
       for( int m = 0; m < M_; m++ ){
-	re_bras.input()[m] = pre_factors[m] * real( chebVecL.List()(l,m) );
-        im_bras.input()[m] = pre_factors[m] * imag( chebVecL.List()(l,m) );
+	re_bras.input()[m] = pre_factors[m] * real( chebVecL.Vector(m)[l] );
+        im_bras.input()[m] = pre_factors[m] * imag( chebVecL.Vector(m)[l] );
 
-	re_kets.input()[m] = pre_factors[m] * real( chebVecR.List()(l,m) );
-        im_kets.input()[m] = pre_factors[m] * imag( chebVecR.List()(l,m) ); 
+	re_kets.input()[m] = pre_factors[m] * real( chebVecR.Vector(m)[l] );
+        im_kets.input()[m] = pre_factors[m] * imag( chebVecR.Vector(m)[l] ); 
       }
 
       
